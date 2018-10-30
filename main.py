@@ -12,6 +12,10 @@ from algorithms.quicksort import quickSort
 # Númeor de desplazamientos
 # Tiempo
 
+# TODO: Faltan todos los algoritmos de ordenamiento, con sus debidas comparaciones, itercambios, desplazamientos y tiempo
+
+
+
 algoritmos = ["QuickSort"]
 
 
