@@ -1,6 +1,7 @@
 import random
 from algorithms.quicksort import quickSort
 from algorithms.mergesort import mergeSort
+from algorithms.insertiosort import insertionSort
 
 # ¡LEER!
 # Al añadir un nuevo algoritmo favor de meterlo en la carpeta algorithms y asignarle su respectiva referencia
@@ -15,7 +16,7 @@ from algorithms.mergesort import mergeSort
 # TODO: Faltan todos los algoritmos de ordenamiento, con sus debidas comparaciones, itercambios, desplazamientos y tiempo
 
 
-algoritmos = ["QuickSort", "MergeSort"]
+algoritmos = ["QuickSort", "MergeSort","InsertionSort"]
 
 
 def correrAlgoritmo(listaNumeros):
@@ -32,6 +33,8 @@ def correrAlgoritmo(listaNumeros):
         quickSort(listaNumeros)
     elif(respuesta == 2):
         mergeSort(listaNumeros)
+    elif(respuesta==3):
+        insertionSort(listaNumeros)
 
 
 def pedirCantidadDeNumeros():
