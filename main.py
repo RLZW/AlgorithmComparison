@@ -15,7 +15,7 @@ from algorithms.quicksort import quickSort
 # TODO: Faltan todos los algoritmos de ordenamiento, con sus debidas comparaciones, itercambios, desplazamientos y tiempo
 
 
-algoritmos = ["QuickSort"]
+algoritmos = ["QuickSort", "HeapSort"]
 
 
 def correrAlgoritmo(listaNumeros):
@@ -30,6 +30,9 @@ def correrAlgoritmo(listaNumeros):
 
     if(respuesta == 1):
         quickSort(listaNumeros)
+    if(respuesta == 2):
+        pass
+        # HeapSort()
 
 
 def pedirCantidadDeNumeros():
