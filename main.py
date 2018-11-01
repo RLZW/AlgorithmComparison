@@ -15,7 +15,6 @@ from algorithms.quicksort import quickSort
 # TODO: Faltan todos los algoritmos de ordenamiento, con sus debidas comparaciones, itercambios, desplazamientos y tiempo
 
 
-
 algoritmos = ["QuickSort"]
 
 
@@ -86,7 +85,6 @@ def menu():
     print(listaNumeros)
 
     correrAlgoritmo(listaNumeros)
-
     print(listaNumeros)
 
 
