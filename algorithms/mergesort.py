@@ -9,7 +9,7 @@ def mergeSort(alist):
         j=0
         k=0
         while i<len(left) and j<len(rigth):
-            if left[i]<rigth[i]:
+            if left[i]<rigth[j]:
                 alist[k] =left[i]
                 i+=1
             else:
