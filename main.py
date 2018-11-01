@@ -1,6 +1,6 @@
 import random
-import socket
-from algorithms.quicksort import quickSort
+from AlgorithmComparison.algorithms.quicksort import quickSort
+from AlgorithmComparison.algorithms.mergesort import mergeSort
 
 # ¡LEER!
 # Al añadir un nuevo algoritmo favor de meterlo en la carpeta algorithms y asignarle su respectiva referencia
@@ -16,7 +16,7 @@ from algorithms.quicksort import quickSort
 
 
 
-algoritmos = ["QuickSort"]
+algoritmos = ["QuickSort","MergeSort"]
 
 
 def correrAlgoritmo(listaNumeros):
@@ -31,6 +31,8 @@ def correrAlgoritmo(listaNumeros):
 
     if(respuesta == 1):
         quickSort(listaNumeros)
+    elif(respuesta==2):
+        mergeSort(listaNumeros)
 
 
 def pedirCantidadDeNumeros():
