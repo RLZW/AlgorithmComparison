@@ -7,5 +7,5 @@ Python console application for algorithm comparison
 * También tiene que imprimir lo siguiente:
   * Número de comparaciones
   * Número de intercambios
-  * Númeor de desplazamientos
+  * Número de desplazamientos
   * Tiempo
