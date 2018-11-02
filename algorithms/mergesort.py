@@ -11,10 +11,10 @@ def mergeSortHelper(alist):
         k=0
         while i<len(left) and j<len(rigth):
             if left[i]<rigth[j]:
-                alist[k] =left[i]
+                alist[k] = left[i]
                 i+=1
             else:
-                alist[k]= rigth[j]
+                alist[k] = rigth[j]
                 j+=1
             k+=1
         while i < len(left):
