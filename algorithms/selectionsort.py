@@ -1,16 +1,13 @@
 import time
 def selectionSortHelp(alist, comparaciones, intercambios):
-    for index in range(len(alist)-1,0,-1):
+    for i in range(len(alist)):
+        mini = i
         comparaciones+=1
-        positionOfMax=0
-        for location in range(1,index+1):
-            intercambios+=1
-            if alist[location]>alist[positionOfMax]:
-                positionOfMax = location
-
-        temp = alist[index]
-        alist[index] = alist[positionOfMax]
-        alist[positionOfMax] = temp
+        for j in range(i+1, len(alist)):
+            if(alist[mini] > alist[j]):
+                intercambios+=1
+                mini = j
+        alist[i], alist[mini] = alist[mini], alist[i]
     return [alist, comparaciones, intercambios]
 
 def selectionSort(alist):
