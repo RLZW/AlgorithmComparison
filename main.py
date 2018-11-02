@@ -38,7 +38,8 @@ def correrAlgoritmo(listaNumeros):
         insertionSort(listaNumeros)
     elif(respuesta==4):
         selectionSort(listaNumeros)
-    
+    else:
+        print("Error, trata con un numero valido")
 
 
 def pedirCantidadDeNumeros():
