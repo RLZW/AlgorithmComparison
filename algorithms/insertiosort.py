@@ -15,7 +15,7 @@ def insertionSortHelper(alist,intercambios,comparaciones):
 
 def insertionSort(alist):
     start = time.time()
-    compaciones = 0
+    compaciones = 2
     intecambios = 0
     values = insertionSortHelper(alist,intecambios,compaciones)
     end = time.time()
