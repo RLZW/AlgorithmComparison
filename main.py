@@ -17,9 +17,10 @@ from algorithms.heapSort import heapSort
 # Tiempo
 
 # TODO: Faltan todos los algoritmos de ordenamiento, con sus debidas comparaciones, itercambios, desplazamientos y tiempo
+# TODO: Importar la función auxiliar "_imprimeTablaComplejidad" a todos sus metodos de sort
 
-
-algoritmos = ["QuickSort", "MergeSort","InsertionSort", "SelectionSort","BubbleSort","HeapSort"]
+algoritmos = ["QuickSort", "MergeSort", "InsertionSort",
+              "SelectionSort", "BubbleSort", "HeapSort"]
 
 
 def correrAlgoritmo(listaNumeros):
@@ -33,19 +34,25 @@ def correrAlgoritmo(listaNumeros):
         "Ingresa el número del algoritmo con el que quieres ordenar tus números: "))
 
     if(respuesta == 1):
+        _imprimeOrdenamiento(respuesta)
         quickSort(listaNumeros)
     elif(respuesta == 2):
+        _imprimeOrdenamiento(respuesta)
         mergeSort(listaNumeros)
-    elif(respuesta==3):
+    elif(respuesta == 3):
+        _imprimeOrdenamiento(respuesta)
         insertionSort(listaNumeros)
-    elif(respuesta==4):
+    elif(respuesta == 4):
+        _imprimeOrdenamiento(respuesta)
         selectionSort(listaNumeros)
-    elif(respuesta==5):
+    elif(respuesta == 5):
+        _imprimeOrdenamiento(respuesta)
         bubbleSort(listaNumeros)
-    elif(respuesta==6):
+    elif(respuesta == 6):
+        _imprimeOrdenamiento(respuesta)
         heapSort(listaNumeros)
     else:
-        print("Error, trata con un numero valido")
+        print("Error, trata con un número válido")
 
 
 def pedirCantidadDeNumeros():
@@ -61,10 +68,22 @@ def _generarNumeros(cantidad):
     return my_randoms
 
 
+def _imprimeTablaComplejidad(comparaciones, intercambios, realizadas, tiempo):
+    """Crea la tabla de complejidades recibiendo 3 listas con 2 elementos  y un parametro de tiempo."""
+    print("-----------------------------------------------------------------------------------")
+    print("             |       Comparaciones       |       Intercambios")
+    print(
+        f"Notacion O   |      {comparaciones[0]}      |       {intercambios[0]}")
+    print(
+        f"Complejidad  |      {comparaciones[1]}      |       {intercambios[1]}")
+    print("-----------------------------------------------------------------------------------")
+    print(f"Realizadas  |       {realizadas[0]}     |       {realizadas[1]}")
+
+
 def ingresaGenera():
     """Regresa True si se desean ingresar y False si se desean generar aleatoriamente"""
     res = input(
-        "Deseas ingresar numeros[X] o generarlos aleatoriamente[A]: ").lower()
+        "Deseas ingresar números[X] o generarlos aleatoriamente[A]: ").lower()
     if res == "x":
         return True
     if res == "a":
@@ -89,9 +108,91 @@ def generaAleatorios():
     return numeros
 
 
-def menu():
-    res = ingresaGenera()
+def _imprimeOrdenamiento(respuesta):
+    """Imprime el título del algoritmo antes de correrlo"""
+    global algoritmos
+    print(f':::::: {algoritmos[respuesta-1]} ::::::')
 
+
+def imprimirLogoTec():
+    """Imprime el logo del Tec es ASCII"""
+    print(r"""\                                                                                                                                              
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                     ,#%%%%%%%%%%%%%%%%%%#,                                                                    
+                                                                (%%%%%%%%%%%%%%# (%%%%%%%%%%%%%/                                                               
+                                                            (%%%%%%%%%%%%%%%%%%.   %%%%%%%((%%%%%%%*                                                           
+                                                         %%%%%%%%%%%%%%%%%%%%%/    *%%%%%%  .%%%%%%%%%#                                                        
+                                                      *%%%%%%%%%%%%%%%%%%%%%%.     *%%%%%    #%%%%%%%%%%%.                                                     
+                                                    (%%%%%%%%%%%%%%%%%%%%%%(       %%%%*     #%%%%%%%%%%%%%*                                                   
+                                                  .%%%%%%%%%%%%%%%%%%%%%%(       .%%%%       %%%%%%%%%%%%%%%%.                                                 
+                                                 %%%%%%%%%%%%%%%%%%%%%%,       .%%%%        %%% %%%%%%%%%%%%%%%                                                
+                                               (%%%%%%%%%%%%%%%%%%%%%/        %%%%        #%%%  .%%%%%%%%%%%%%%%*                                              
+                                              %%%%%%%%%%%%%%%%%%%%%/        %%%%        #%%%.    %%%%%%% %%%%%%%%(                                             
+                                             %%%%%%%%%%%%%%%%%%%%*        %%%%        #%%%#     *%%%%%#  *%%%%%%%%%                                            
+                                            %%%%%%%%%%%%%%%%%%%.       ,%%%#        %%%%/      .%%%%%    .%%%%%%%%%%                                           
+                                           #%%%%%%%%%%%%%%%%%,        %%%#        #%%%/       /%%%%      #%%%%%%%%%%/                                          
+                                           %%%%%%%%%%%%%%%%,        %%%(        #%%%*        %%%%       .%%%%%%%%%%%%                                          
+                                          %%%%%%%%%%%%%%%*       .%%%#        #%%%(        %%%%        #%%%%%%%%%%%%%%                                         
+                                         *%%%%%%%%%%%%%%       *%%%/        %%%%,       .%%%%        (%%%%%%%%%%%%%%%%                                         
+                                         %%%%%%%%%%%%%#      .%%%/        #%%%,       .%%%%        (%%%# %%%%%%%%%%%%%#                                        
+                                         %%%%%%%%%%%%%      %%%%        %%%%.       ,%%%%        (%%%%   %%%%%%%%%%%%%%                                        
+                                         %%%%%%%%%%%%(     %%%(       %%%%*        %%%%        #%%%%     %%%%%%%%%%%%%%                                        
+                                         %%%%%%%%%%%%/    %%%/      %%%%.       ,%%%#        #%%%#      #%%%%%%%%%%%%%%                                        
+                                         %%%%%%%%%%%%%   *%%%     *%%%,       *%%%%        #%%%#       #%%%%%%%%%%%%%%%                                        
+                                         %%%%%%%%%%%%%.  #%%*    %%%%       *%%%%        #%%%#        %%%%%%%%%%%%%%%%%                                        
+                                         %%%%%%%%%%%%%%  /%%(   %%%%       %%%%        %%%%#        %%%%%%%%%%%%%%%%%%(                                        
+                                         .%%%%%%%%%%%%%%% %%%  %%%%      %%%%/       %%%%/        %%%%%%%%%%%%%%%%%%%%                                         
+                                          %%%%%%%%%%%%%%%%%%%% %%%/     %%%%,      /%%%%       .%%%%%%%%%%%%%%%%%%%%%%                                         
+                                           %%%%%%%%%%%%%%%%%%%%%%%     %%%%%      %%%%%       %%%%%%%%%%%%%%%%%%%%%%%                                          
+                                           (%%%%%%%%%%%%%%%%%%%%%%    (%%%%(     %%%%%,     %%%%%%%%%%%%%%%%%%%%%%%%,                                          
+                                            %%%%%%%%%%%%%%%%%%%%%%*   %%%%%%    %%%%%%    ,%%%%%%%%%%%%%%%%%%%%%%%%(                                           
+                                             #%%%%%%%%%%%%%%%%%%%%%   %%%%%%.  %%%%%%%   #%%%%%%%%%%%%%%%%%%%%%%%%#                                            
+                                              (%%%%%%%%%%%%%%%%%%%%%  %%%%%%%* %%%%%%%* /%%%%%%%%%%%%%%%%%%%%%%%%*                                             
+                                               *%%%%%%%%%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%/%%%%%%%%%%%%%%%%%%%%%%%%.                                              
+                                                 %%%%%%%%%////////////////////////////////////////////%%%%%%%%#                                                
+                                                   %%%%%%%%/                                        #%%%%%%%%                                                  
+                                                    .%%%%%%%%#                                    #%%%%%%%%                                                    
+                                                       %%%%%%%%%(                              #%%%%%%%%%                                                      
+                                                         ,%%%%%%%%%%%#,                  ,#%%%%%%%%%%%                                                         
+                                                            .%%%%%%%%%%%%%%          %%%%%%%%%%%%%%                                                            
+                                                                .%%%%%%%%%%          %%%%%%%%%#                                                                
+                                                                      ,#%%%          %%%(.                                                                     
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                     (%%%%%%%%%%%%%                                            *#%%#        %%*                 /#                                             
+                     ##    %%#   .%                                              %%#       /%                  .%%#                                            
+                     (     %%#    *                                              %%#                                                                           
+                           %%#     /%. %%#    /%**%%% #%%%.%%%%%,    /%(  %%#    %%#    #%/  %%(    %%/ .%%%%,,%%%%    .%(.#%%   #%(  %%#                      
+                           %%#    %%    %%# .%%        /%%.   %%%   %%#    %%%   %%#   %%*    %%%  %%%   (%%    %%%   %%        %%#    %%%                     
+                           %%#   #%%        %%(        /%%.   %%%  /%%/    *%%(  %%#  %%%     #%%, #%%   #%%    %%%  #%%       #%%*    #%%(                    
+                           %%#   (%%.       %%%        /%%.   #%%  ,%%#    *%%,  %%#  #%%/    #%%    #%%%(      %%%  (%%*      (%%#    #%%,                    
+                          .%%%    (%%%#(#%   %%%%#(%#  (%%,   %%%   *%%*   %%,   %%#   #%%*   %%   %%%%###(,    %%%   #%%%#/#%  *%%*   %%                      
+                                     */.       .//                     ,//.               ,/*.      .%%##%%%%,           */.       ,//.                        
+                                                                                                   %%      #%.                                                 
+                                                                                                   %%%    /%                                                   
+                   ,(%%%                   %%%%%          %%%%#                                                                                                
+                     %%%                     #%%%        %%%/                              /#                                                                  
+                     %%%                     # %%#      % %%/                             %%#                                                                  
+               .%%. #%%%    .%/ /%%          % *%%#    %. %%(    .%%  #%%   %%%%.%%%%%  /(%%#((   /%  %%/ *%%%/(%%% %%%% %%%(  %%  %%, /%%%,  .%%*             
+              %%(    %%%   %%/   %%%         %  *%%/  %.  %%(   %%%    /%%(  (%%    %%%   %%#    %%    %%,  %%%      *%%*    ,%%   .%%   %%#   %               
+             (%%.    %%%   %%.               %   #%%.#/   %%#  .%%%     %%%  (%%    %%%   %%#   %%%         %%/      *%%     %%(         *%%. %                
+             /%%#    %%%   %%#              *%    %%%%    %%#   %%%     %%%  (%%    %%%   %%#   #%%.        %%/      *%%     %%%          (%%**                
+              #%%%, ,%%%   *%%%#*(%*        %%     %%     %%%    %%%   #%#   (%%    %%%   %%%    %%%%(*#%   %%(      /%%      %%%%//%%     %%#                 
+                 ,,  .        .,.                                   ,,.                     ,.      ,,                           ,,        .#                  
+                                                                                                                                           %                   
+                                                                                                                                        ,%%                    
+                                                                                                                                         ..        
+        """
+          )
+
+
+def menu():
+    imprimirLogoTec()
+    res = ingresaGenera()
     if(res):
         listaNumeros = ingresaNumeros()
     else:
