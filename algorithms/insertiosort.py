@@ -1,4 +1,4 @@
-from utility import _imprimeTablaComplejidad
+from algorithms.utilidades import imprimeTablaComplejidad
 
 import time
 
@@ -14,6 +14,7 @@ def insertionSortHelper(alist, intercambios, comparaciones):
             position = position - 1
 
         alist[position] = currentvalue
+        print ('Iteracion ',index,':',alist)
     return [alist, intercambios, comparaciones]
 
 
@@ -25,13 +26,13 @@ def insertionSort(alist):
     end = time.time()
     elapsedtime = end-start
     comparaciones = [f"n²={len(alist)**2}",
-                     f"((n-1)n)/2 = {((len(alist)-1)*n)/2}"]
+                     f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
     desplazamientos = [
-        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*n)/2]}"]
+        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
 
     realizadas = [values[2], values[1]]
 
-    _imprimeTablaComplejidad(
+    imprimeTablaComplejidad(
         "DESPLAZAMIENTOS", comparaciones, desplazamientos, realizadas, elapsedtime)
 
     return values
