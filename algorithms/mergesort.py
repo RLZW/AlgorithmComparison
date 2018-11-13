@@ -1,4 +1,5 @@
 import time
+from utility import _imprimeTablaComplejidad
 
 
 def mergeSortHelper(alist, comparaciones):
@@ -40,4 +41,4 @@ def mergeSort(alist):
     elapsedtime = end - start
     print("Tiempo: ", elapsedtime)
     print("Comparaciones", values[1])
-    return values[0]
+    return values
