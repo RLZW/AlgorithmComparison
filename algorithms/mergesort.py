@@ -1,5 +1,4 @@
 import time
-from utility import _imprimeTablaComplejidad
 
 
 def mergeSortHelper(alist, comparaciones):
