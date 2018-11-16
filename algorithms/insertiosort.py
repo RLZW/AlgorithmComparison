@@ -14,7 +14,7 @@ def insertionSortHelper(alist, intercambios, comparaciones):
             position = position - 1
 
         alist[position] = currentvalue
-        print ('Iteracion ',index,':',alist)
+        print('Iteracion ', index, ':', alist)
     return [alist, intercambios, comparaciones]
 
 
