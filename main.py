@@ -77,7 +77,7 @@ def ingresaGenera():
     if res == "a":
         return False
     else:
-        ingresaGenera()
+        return ingresaGenera()
     return res
 
 

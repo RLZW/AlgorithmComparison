@@ -1,6 +1,8 @@
 from tabulate import tabulate
 
 
+
+
 def imprimeTablaComplejidad(tipo, comparaciones, intercambios, realizadas, tiempo):
     """Crea la tabla de complejidades recibiendo 3 listas con 2 elementos  y un parametro de tiempo."""
 

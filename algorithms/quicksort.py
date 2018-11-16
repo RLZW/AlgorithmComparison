@@ -1,3 +1,8 @@
+from algorithms.utilidades import imprimeTablaComplejidad
+
+import time
+
+
 def quickSort(alist):
     quickSortHelper(alist, 0, len(alist)-1)
 
