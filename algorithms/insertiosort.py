@@ -3,19 +3,18 @@ from algorithms.utilidades import imprimeTablaComplejidad
 import time
 
 
-def insertionSortHelper(alist, intercambios, comparaciones):
+def insertionSortHelper(alist, desplazamientos, comparaciones):
     for index in range(1, len(alist)):
         comparaciones += 1
         currentvalue = alist[index]
         position = index
         while (position > 0) and (alist[position - 1] > currentvalue):
-            intercambios += 1
+            desplazamientos += 1
             alist[position] = alist[position - 1]
             position = position - 1
-
         alist[position] = currentvalue
-        print('Iteracion ', index, ':', alist)
-    return [alist, intercambios, comparaciones]
+        print ('Iteracion ',index,':',alist)
+    return [alist, desplazamientos, comparaciones]
 
 
 def insertionSort(alist):

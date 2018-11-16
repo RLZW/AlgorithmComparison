@@ -1,13 +1,13 @@
 import time
 
 
-def mergeSortHelper(alist, comparaciones):
+def mergeSortHelper(alist, comparaciones, intercambios):
     if len(alist) > 1:
         middle = len(alist) // 2
         left = alist[:middle]
         rigth = alist[middle:]
-        mergeSortHelper(left, comparaciones)
-        mergeSortHelper(rigth, comparaciones)
+        mergeSortHelper(left, comparaciones,intercambios)
+        mergeSortHelper(rigth, comparaciones,intercambios)
         i = 0
         j = 0
         k = 0
@@ -22,22 +22,28 @@ def mergeSortHelper(alist, comparaciones):
                 j += 1
             k += 1
         while i < len(left):
+            intercambios+=1
             alist[k] = left[i]
             i += 1
             k += 1
+            print(alist)
         while j < len(rigth):
+            intercambios+=1
             alist[k] = rigth[j]
             j += 1
             k += 1
-    return [alist, comparaciones]
+            print(alist)
+    return [alist, comparaciones,intercambios]
 
 
 def mergeSort(alist):
     start = time.time()
     comparaciones = 0
-    values = mergeSortHelper(alist, comparaciones)
+    intercambios=0
+    values = mergeSortHelper(alist, comparaciones, intercambios)
     end = time.time()
     elapsedtime = end - start
     print("Tiempo: ", elapsedtime)
     print("Comparaciones", values[1])
+    print('Intercambios', values[2])
     return values
