@@ -8,6 +8,7 @@ def selectionSortHelp(alist, comparaciones, intercambios):
                 intercambios+=1
                 mini = j
         alist[i], alist[mini] = alist[mini], alist[i]
+        print("ITERACION", i+1, " :", alist)
     return [alist, comparaciones, intercambios]
 
 def selectionSort(alist):
