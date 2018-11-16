@@ -18,15 +18,20 @@ def heapify(arreglo,n,i):
 		arreglo[i],arreglo[mas_grande]=arreglo[mas_grande],arreglo[i]
 		intercambios+=1
 		heapify(arreglo,i,0)
+	
 def sort(arreglo):
+	iter=0
 	global intercambios
 	n=len(arreglo)
 	for i in range(n,-1,-1):
 		heapify(arreglo,n,i)
+		
 	for i in range(n-1,0,-1):
+		iter+=1
 		arreglo[i],arreglo[0]=arreglo[0],arreglo[i]
 		intercambios+=1
 		heapify(arreglo,i,0)
+		print('ITERACION '+str(iter)+':'+str(arreglo))
 
 def heapSort(alist):
 	global comparaciones
