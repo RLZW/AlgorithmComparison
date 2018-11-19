@@ -12,7 +12,7 @@ def bubbleSortHelp(alist, comparaciones, intercambios):
             if alist[j] > alist[j+1]:
                 intercambios += 1
                 alist[j], alist[j+1] = alist[j+1], alist[j]
-        print("ITERACION ", i+1, " :", alist)
+        print("ITERACIÓN", i+1, " :", alist)
     return [alist, comparaciones, intercambios]
 
 

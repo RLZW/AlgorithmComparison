@@ -1,13 +1,28 @@
 from algorithms.utilidades import imprimeTablaComplejidad
 
 import time
+intercambios = 0
+particiones = 0
+index = 0
+iteracion = 0
 
 
 def quickSort(alist):
+    start = time.clock()
+
     quickSortHelper(alist, 0, len(alist)-1)
+
+    end = time.clock()
+    times = end - start
+
+    print(particiones)
+    print(times)
 
 
 def quickSortHelper(alist, first, last):
+    global iteracion
+    iteracion += 1
+    print(f"ITERACIÓN {iteracion}: {alist}")
     if first < last:
 
         splitpoint = partition(alist, first, last)
@@ -17,6 +32,9 @@ def quickSortHelper(alist, first, last):
 
 
 def partition(alist, first, last):
+    global particiones
+    particiones += 1
+
     pivotvalue = alist[first]
 
     leftmark = first+1

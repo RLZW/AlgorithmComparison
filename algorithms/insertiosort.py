@@ -13,7 +13,7 @@ def insertionSortHelper(alist, desplazamientos, comparaciones):
             alist[position] = alist[position - 1]
             position = position - 1
         alist[position] = currentvalue
-        print ('Iteracion ',index,':',alist)
+        print ('ITERACIÓN ',index,':',alist)
     return [alist, desplazamientos, comparaciones]
 
 
