@@ -1,4 +1,5 @@
 import time
+from algorithms.utilidades import imprimeTablaComplejidad
 intercambios=0
 comparaciones=0
 
@@ -48,7 +49,13 @@ def mergeSort(alist):
     values = mergeSortHelper(alist)
     end = time.time()
     elapsedtime = end - start
-    print("Tiempo: ", elapsedtime)
-    print("Comparaciones", values[1])
-    print('Intercambios', values[2])
+    comparaciones = [f"n²={len(alist)**2}",
+                     f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
+    desplazamientos = [
+        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
+
+    realizadas = [values[2], values[1]]
+
+    imprimeTablaComplejidad(
+        "DESPLAZAMIENTOS", comparaciones, desplazamientos, realizadas, elapsedtime)
     return values
