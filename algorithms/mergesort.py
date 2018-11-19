@@ -20,6 +20,7 @@ def mergeSortHelper(alist):
         j = 0
         k = 0
         while i < len(left) and j < len(rigth):
+            global index
             print (alist)
             if left[i] < rigth[j]:
                 comparaciones += 1
@@ -31,6 +32,7 @@ def mergeSortHelper(alist):
                 j += 1
             k += 1
         while i < len(left):
+            global index
             intercambios+=1
             alist[k] = left[i]
             i += 1
@@ -38,12 +40,15 @@ def mergeSortHelper(alist):
             print('Iteracion ', index, ':', alist)
             index+=1
         while j < len(rigth):
+            global index
             intercambios+=1
             alist[k] = rigth[j]
             j += 1
             k += 1
             print('Iteracion ', index, ':', alist)
             index+=1
+        print('Iteracion ', index, ':', alist)
+        index+=1
     return [alist, comparaciones,intercambios]
 
 
@@ -54,8 +59,8 @@ def mergeSort(alist):
     values = mergeSortHelper(alist)
     end = time.time()
     elapsedtime = end - start
-    comparaciones = [f"n²={len(alist)**2}",
-                     f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
+    comparaciones = [f"n(log(N))={len(alist)*(log(len(alist),10))}",
+                     f"n(log(N)) = {((len(alist)-1)*len(alist))/2}"]
     desplazamientos = [
         f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
 
