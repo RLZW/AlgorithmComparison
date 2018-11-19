@@ -1,12 +1,15 @@
 import time
 from algorithms.utilidades import imprimeTablaComplejidad
+from math import log
 intercambios=0
 comparaciones=0
+index = 0
 
 
 def mergeSortHelper(alist):
     global intercambios
     global comparaciones
+    global index
     if len(alist) > 1:
         middle = len(alist) // 2
         left = alist[:middle]
@@ -32,13 +35,15 @@ def mergeSortHelper(alist):
             alist[k] = left[i]
             i += 1
             k += 1
-            print(alist)
+            print('Iteracion ', index, ':', alist)
+            index+=1
         while j < len(rigth):
             intercambios+=1
             alist[k] = rigth[j]
             j += 1
             k += 1
-            print(alist)
+            print('Iteracion ', index, ':', alist)
+            index+=1
     return [alist, comparaciones,intercambios]
 
 
