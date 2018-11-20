@@ -14,13 +14,12 @@ def heapify(final,i,lista):
     l=2 * i + 1  
     r=2 * (i + 1)   
     maximo=i   
-    if l < final and lista[i] < lista[l]:
-        comparaciones+=1   
+    if l < final and lista[i] < lista[l]:     
         maximo = l   
-    if r < final and lista[maximo] < lista[r]:
-        comparaciones+=1   
+    if r < final and lista[maximo] < lista[r]: 
         maximo = r   
-    if maximo != i:   
+    if maximo != i:
+        comparaciones+=1  
         swap(i, maximo,lista)
         intercambios+=1
         heapify(final, maximo,lista)   
@@ -49,12 +48,11 @@ def heapSort(alist):
     end=time.clock()
     realizadas=[comparaciones,intercambios]
 
-    comparaciones = [f"n*log(n)={round(nlogn,2)}",
-                     f"n*log(n) = {round(nlogn,2)}"]
+    comparaciones = [f"n*log(n)={round(nlogn,4)}",
+                     f"n*log(n) = {round(nlogn,4)}"]
     desplazamientos = [
-        f"n*log(n)={round(nlogn,2)}", f"de 0 a n*log(n) = {[0,round(nlogn,2)]}"]
+        f"n*log(n)={round(nlogn,4)}", f"de 0 a n*log(n) = {[0,round(nlogn,4)]}"]
 
     imprimeTablaComplejidad(
         "Intercambios", comparaciones, desplazamientos, realizadas, end-start)
 
-    return alist
