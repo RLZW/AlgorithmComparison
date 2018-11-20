@@ -1,63 +1,52 @@
 from algorithms.utilidades import imprimeTablaComplejidad
 
 import time
-intercambios = 0
-particiones = 0
-index = 0
-iteracion = 0
+desplazamientos = 0
+comparaciones = 0
+iteraciones = 0
 
 
 def quickSort(alist):
-    start = time.clock()
+    start = time.time()
+    quickSortHelper(alist, 0, len(alist))
+    end = time.time()
 
-    quickSortHelper(alist, 0, len(alist)-1)
+    elapsedtime = end - start
 
-    end = time.clock()
-    times = end - start
+    comparacionesteor = [f"n²={len(alist)**2}",
+                         f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
+    desplazamientosteor = [
+        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
 
-    print(particiones)
-    print(times)
-
-
-def quickSortHelper(alist, first, last):
-    global iteracion
-    iteracion += 1
-    print(f"ITERACIÓN {iteracion}: {alist}")
-    if first < last:
-
-        splitpoint = partition(alist, first, last)
-
-        quickSortHelper(alist, first, splitpoint-1)
-        quickSortHelper(alist, splitpoint+1, last)
+    realizadas = [comparaciones, desplazamientos]
+    imprimeTablaComplejidad(
+        "DESPLAZAMIENTOS", comparacionesteor, desplazamientosteor, realizadas, elapsedtime)
+    return alist
 
 
-def partition(alist, first, last):
-    global particiones
-    particiones += 1
+def quickSortHelper(lista, low, high):
+    global comparaciones, desplazamientos, iteraciones
+    iteraciones += 1    
+    print('ITERACIÓN ', iteraciones, ':', lista)
+    if (low >= high):
+        return
 
-    pivotvalue = alist[first]
 
-    leftmark = first+1
-    rightmark = last
+    pivote = lista[high - 1]
+ 
+    limite = low
 
-    done = False
-    while not done:
+    for i in range(low, high):
+        comparaciones += 1
 
-        while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
-            leftmark = leftmark + 1
+        if (lista[i] <= pivote):
+            desplazamientos += 1
+            temp = lista[limite]
+            lista[limite] = lista[i]
+            lista[i] = temp
+            limite = limite + 1
+            if limite >= high:
+                break
 
-        while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
-            rightmark = rightmark - 1
-
-        if rightmark < leftmark:
-            done = True
-        else:
-            temp = alist[leftmark]
-            alist[leftmark] = alist[rightmark]
-            alist[rightmark] = temp
-
-    temp = alist[first]
-    alist[first] = alist[rightmark]
-    alist[rightmark] = temp
-
-    return rightmark
+    quickSortHelper(lista, low, limite - 1)
+    quickSortHelper(lista, limite, high)
