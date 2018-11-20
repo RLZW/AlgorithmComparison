@@ -1,61 +1,60 @@
 from algorithms.utilidades import imprimeTablaComplejidad
 import time
+from math import log2
 
+intercambios=0
+comparaciones=0
 
-intercambios = 0
-comparaciones = 0
+def swap(i,j,lista):                    
+    lista[i], lista[j] = lista[j], lista[i] 
 
-
-def heapify(arreglo, n, i):
+def heapify(final,i,lista):
     global comparaciones
-    global intercambios
-    mas_grande = i
-    l = 2*i+1
-    r = 2*i+2
-    if l < n and arreglo[i] < arreglo[l]:
-        comparaciones += 1
-        mas_grande = l
-    if r < n and arreglo[mas_grande] < arreglo[r]:
-        comparaciones += 1
-        mas_grande = r
-    if mas_grande != i:
-        arreglo[i], arreglo[mas_grande] = arreglo[mas_grande], arreglo[i]
-        intercambios += 1
-        heapify(arreglo, i, 0)
+    global intercambios   
+    l=2 * i + 1  
+    r=2 * (i + 1)   
+    maximo=i   
+    if l < final and lista[i] < lista[l]:
+        comparaciones+=1   
+        maximo = l   
+    if r < final and lista[maximo] < lista[r]:
+        comparaciones+=1   
+        maximo = r   
+    if maximo != i:   
+        swap(i, maximo,lista)
+        intercambios+=1
+        heapify(final, maximo,lista)   
 
-
-def sort(arreglo):
-    iter = 0
-    global intercambios
-    n = len(arreglo)
-    for i in range(n, -1, -1):
-        heapify(arreglo, n, i)
-
-    for i in range(n-1, 0, -1):
-        iter += 1
-        arreglo[i], arreglo[0] = arreglo[0], arreglo[i]
-        intercambios += 1
-        heapify(arreglo, i, 0)
-        print('ITERACIÓN '+str(iter)+':'+str(arreglo))
-
+def heap_sort(lista):
+    iter=0
+    global intercambios     
+    final = len(lista)   
+    inicio  = final // 2 - 1 
+    for i in range(inicio , -1, -1):   
+        heapify(final, i,lista)   
+    for i in range(final-1, 0, -1):
+        iter+=1   
+        swap(i, 0,lista)
+        intercambios+=1   
+        heapify(i, 0,lista)
+        print('ITERACIÓN '+str(iter)+':'+str(lista))
 
 def heapSort(alist):
+    n=len(alist)
+    nlogn=n*log2(n)
     global comparaciones
     global intercambios
-    start = time.clock()
-    sort(alist)
-    end = time.clock()
+    start=time.clock()
+    heap_sort(alist)
+    end=time.clock()
+    realizadas=[comparaciones,intercambios]
 
-    realizadas = [comparaciones, intercambios]
-
-    comparaciones = [f"n²={len(alist)**2}",
-                     f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
+    comparaciones = [f"n*log(n)={round(nlogn,2)}",
+                     f"n*log(n) = {round(nlogn,2)}"]
     desplazamientos = [
-        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
+        f"n*log(n)={round(nlogn,2)}", f"de 0 a n*log(n) = {[0,round(nlogn,2)]}"]
 
     imprimeTablaComplejidad(
         "Intercambios", comparaciones, desplazamientos, realizadas, end-start)
 
     return alist
-
-#print(heapSort([ 12, 11, 13, 5, 6, 7]))
