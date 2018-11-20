@@ -98,7 +98,6 @@ def generaAleatorios():
 
 def _imprimeOrdenamiento(respuesta):
     """Imprime el título del algoritmo antes de correrlo"""
-    global algoritmos
     print(f':::::: {algoritmos[respuesta-1]} ::::::')
 
 
