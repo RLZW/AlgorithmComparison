@@ -9,9 +9,11 @@ def insertionSortHelper(alist, desplazamientos, comparaciones):
         currentvalue = alist[index]
         position = index
         while (position > 0) and (alist[position - 1] > currentvalue):
-            desplazamientos += 1
+            if (alist[index-1]> alist[index]):
+                comparaciones+=1
             alist[position] = alist[position - 1]
             position = position - 1
+            desplazamientos += 1
         alist[position] = currentvalue
         print ('ITERACIÓN ',index,':',alist)
     return [alist, desplazamientos, comparaciones]

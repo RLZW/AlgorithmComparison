@@ -1,6 +1,6 @@
 import time
 from algorithms.utilidades import imprimeTablaComplejidad
-from math import log
+from math import log2
 intercambios = 0
 comparaciones = 0
 index = 0
@@ -21,19 +21,19 @@ def mergeSortHelper(alist):
         j = 0
         k = 0
         while i < len(left) and j < len(rigth):
-            index
-            print(alist)
+            index+=1
+            #print('ITERACIÓN ', index, ':', alist)
             if left[i] < rigth[j]:
+                intercambios+=1
                 comparaciones += 1
                 alist[k] = left[i]
                 i += 1
             else:
-                comparaciones += 1
+                intercambios+=1
                 alist[k] = rigth[j]
                 j += 1
             k += 1
         while i < len(left):
-            index
             intercambios += 1
             alist[k] = left[i]
             i += 1
@@ -41,7 +41,7 @@ def mergeSortHelper(alist):
             print('ITERACIÓN ', index, ':', alist)
             index += 1
         while j < len(rigth):
-            index
+            index+=1
             intercambios += 1
             alist[k] = rigth[j]
             j += 1
@@ -54,16 +54,18 @@ def mergeSortHelper(alist):
 
 
 def mergeSort(alist):
+    n=len(alist)
+    nlogn=n*log2(n)
     start = time.time()
     global comparaciones
     global intercambios
     values = mergeSortHelper(alist)
     end = time.time()
     elapsedtime = end - start
-    comparaciones = [f"n(log(N))={len(alist)*(log(len(alist),10))}",
-                     f"n(log(N)) = {((len(alist)-1)*len(alist))/2}"]
+    comparaciones = [f"n*log(n)={round(nlogn,2)}",
+                     f"n*log(n) = {round(nlogn,2)}"]
     desplazamientos = [
-        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
+        f"n*log(n)={round(nlogn,2)}", f"de 0 a n*log(n) =  {[0,round(nlogn,0)]}"]
 
     realizadas = [values[2], values[1]]
 
