@@ -31,6 +31,6 @@ def bubbleSort(alist):
     realizadas = [valor[1], valor[2]]
 
     imprimeTablaComplejidad(
-        "DESPLAZAMIENTOS", comparaciones, desplazamientos, realizadas, end-start)
+        "INTERCAMBIOS", comparaciones, desplazamientos, realizadas, end-start)
 
     return valor[1]
