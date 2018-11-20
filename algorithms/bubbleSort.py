@@ -1,6 +1,4 @@
 from algorithms.utilidades import imprimeTablaComplejidad
-
-
 import time
 
 
@@ -22,15 +20,14 @@ def bubbleSort(alist):
     start = time.clock()
     valor = bubbleSortHelp(alist, comparaciones, intercambios)
     end = time.clock()
-
     comparaciones = [f"n²={len(alist)**2}",
                      f"((n-1)n)/2 = {((len(alist)-1)*len(alist))/2}"]
-    desplazamientos = [
-        f"n²={len(alist)**2}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
+    intercambios = [
+        f"n²={len(alist)*len(alist)}", f"de 0 a ((n-1)n)/2 = {[0,((len(alist)-1)*len(alist))/2]}"]
 
     realizadas = [valor[1], valor[2]]
 
     imprimeTablaComplejidad(
-        "INTERCAMBIOS", comparaciones, desplazamientos, realizadas, end-start)
+        "INTERCAMBIOS", comparaciones, intercambios, realizadas, end-start)
 
     return valor[1]
